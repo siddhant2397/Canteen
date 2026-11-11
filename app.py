@@ -69,7 +69,7 @@ if view_mode == "Customer Portal":
             # Show table
             st.dataframe(
                 display_df[["Item Name", "Category", "Price (₹)", "Status"]],
-                use_container_width=True,
+                width='stretch',
                 hide_index=True
             )
         else:
@@ -183,11 +183,11 @@ else:
                     
                 with col_summary:
                     st.write("**Top Demanded Items Summary:**")
-                    st.dataframe(demand_counts, use_container_width=True, hide_index=True)
+                    st.dataframe(demand_counts,width='stretch' , hide_index=True)
                 
                 st.divider()
                 st.subheader("Individual Request Log")
-                st.dataframe(df_demand.sort_values(by="Timestamp", ascending=False), use_container_width=True, hide_index=True)
+                st.dataframe(df_demand.sort_values(by="Timestamp", ascending=False),width='stretch' , hide_index=True)
             else:
                 st.info("No customer demands recorded yet.")
 
