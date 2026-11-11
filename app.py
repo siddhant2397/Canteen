@@ -121,8 +121,8 @@ else:
     st.title("⚙️ Canteen Admin Panel")
     
     admin_pin = st.sidebar.text_input("Enter Admin PIN", type="password")
-    
-    if admin_pin != str(st.secrets.get("admin_pin","")):  # Replace with your secure PIN
+    secret_pin = str(st.secrets.get("admin_pin", ""))
+    if not admin_pin or admin_pin != secret_pin or not secret_pin:
         st.warning("Please enter the correct Admin PIN in the sidebar to access controls.")
     else:
         st.success("Authenticated as Admin")
