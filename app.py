@@ -122,7 +122,7 @@ else:
     
     admin_pin = st.sidebar.text_input("Enter Admin PIN", type="password")
     
-    if admin_pin != "1234":  # Replace with your secure PIN
+    if admin_pin != str(st.secrets.get("admin_pin","")):  # Replace with your secure PIN
         st.warning("Please enter the correct Admin PIN in the sidebar to access controls.")
     else:
         st.success("Authenticated as Admin")
