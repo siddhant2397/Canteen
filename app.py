@@ -84,12 +84,14 @@ if view_mode == "Customer Portal":
         unavail_items = []
         if not df_inv.empty:
             unavail_items = df_inv[df_inv["Available"] == "No"]["Item Name"].tolist()
+
+        selection_type = st.radio("Item Type:", ["Select from unavailable canteen list", "Other permissible item"], horizontal=True)
         
         with st.form("demand_form", clear_on_submit=True):
-            user_id = st.text_input("Unique ID Number (Roll No / Employee ID / Service No)")
+            user_id = st.text_input("Unique ID Number (Employee ID / Service No)")
             user_name = st.text_input("Your Full Name")
             
-            selection_type = st.radio("Item Type:", ["Select from unavailable canteen list", "Other permissible item"])
+            
             
             if selection_type == "Select from unavailable canteen list" and unavail_items:
                 requested_item = st.selectbox("Select Item:", unavail_items)
